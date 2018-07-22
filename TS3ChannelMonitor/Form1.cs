@@ -26,11 +26,6 @@ namespace TS3ChannelMonitor
         {
             LoginForm lf = new LoginForm();
 
-            if (SettingsManager.SettingsCheck(Program.SettingsFile))
-            {
-
-            }
-
             lf.ShowDialog();
         }
     }

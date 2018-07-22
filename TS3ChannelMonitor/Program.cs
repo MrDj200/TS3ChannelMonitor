@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TS3ChannelMonitor.Settings;
+using TS3ChannelMonitor.Utils;
 
 namespace TS3ChannelMonitor
 {
@@ -30,7 +31,11 @@ namespace TS3ChannelMonitor
 
             if (SettingsManager.SettingsCheck(SettingsFile))
             {
-
+                SETTINGS = JsonSerialization.ReadFromJsonFile<GlobalSettings>(SettingsFile);
+            }
+            else
+            {
+                SETTINGS = null;
             }
 
             Application.EnableVisualStyles();

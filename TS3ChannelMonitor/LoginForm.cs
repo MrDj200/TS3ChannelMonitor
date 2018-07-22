@@ -15,6 +15,13 @@ namespace TS3ChannelMonitor
         public LoginForm()
         {
             InitializeComponent();
+
+            if (Program.SETTINGS != null)
+            {
+                this.queryServerBox.Text = Program.SETTINGS.TS3Info.ServerAddress;
+                this.queryUserBox.Text = Program.SETTINGS.TS3Info.TS3LoginName;
+                this.queryPassBox.Text = Program.SETTINGS.TS3Info.TS3LoginPass;
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
