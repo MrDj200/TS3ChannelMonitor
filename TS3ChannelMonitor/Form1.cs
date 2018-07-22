@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TS3ChannelMonitor.Settings;
 
 namespace TS3ChannelMonitor
 {
@@ -24,6 +25,12 @@ namespace TS3ChannelMonitor
         private void loginButton_Click(object sender, EventArgs e)
         {
             LoginForm lf = new LoginForm();
+
+            if (SettingsManager.SettingsCheck(Program.SettingsFile))
+            {
+
+            }
+
             lf.ShowDialog();
         }
     }

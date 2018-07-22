@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace TS3ChannelMonitor.Settings
 {
-    class Settings
+    class GlobalSettings
     {
         public TS3QueryInfo TS3Info { get; set; }
 
-        public Settings()
+        public GlobalSettings()
         {
         }
 
-        public Settings(TS3QueryInfo info)
+        public GlobalSettings(TS3QueryInfo info)
         {
             try
             {
