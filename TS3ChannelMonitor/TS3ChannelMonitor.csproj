@@ -182,6 +182,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\Settings.cs" />
+    <Compile Include="Settings\TS3QueryInfo.cs" />
+    <Compile Include="TS3Stuff\TS3Query.cs" />
+    <Compile Include="Utils\JsonSerialization.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -8,6 +8,15 @@ namespace TS3ChannelMonitor
 {
     static class Program
     {
+        public enum ConnectionResult
+        {
+            UNKNOWN = -1,
+            OK = 0,
+            SOCKET = 1,
+            QUERY = 2,
+            SQLERROR = 3
+        }
+
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
