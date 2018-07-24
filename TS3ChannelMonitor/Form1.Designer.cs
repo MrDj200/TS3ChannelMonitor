@@ -147,7 +147,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "TS3 Channel Monitor";
             this.ResumeLayout(false);
             this.PerformLayout();
 

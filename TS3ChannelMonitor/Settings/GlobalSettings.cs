@@ -12,6 +12,7 @@ namespace TS3ChannelMonitor.Settings
 
         public GlobalSettings()
         {
+            TS3Info = new TS3QueryInfo();
         }
 
         public GlobalSettings(TS3QueryInfo info)

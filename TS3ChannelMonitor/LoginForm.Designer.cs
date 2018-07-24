@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonConfirm = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.queryServerBox = new System.Windows.Forms.TextBox();
             this.queryPassBox = new System.Windows.Forms.TextBox();
             this.queryUserBox = new System.Windows.Forms.TextBox();
@@ -38,31 +38,33 @@
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // buttonConfirm
+            // btnConfirm
             // 
-            this.buttonConfirm.Location = new System.Drawing.Point(129, 120);
-            this.buttonConfirm.Name = "buttonConfirm";
-            this.buttonConfirm.Size = new System.Drawing.Size(75, 23);
-            this.buttonConfirm.TabIndex = 0;
-            this.buttonConfirm.Text = "Confirm";
-            this.buttonConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Location = new System.Drawing.Point(129, 120);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(75, 23);
+            this.btnConfirm.TabIndex = 5;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // buttonCancel
+            // btnCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(23, 120);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 1;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(23, 120);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 4;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // queryServerBox
             // 
             this.queryServerBox.Location = new System.Drawing.Point(104, 25);
             this.queryServerBox.Name = "queryServerBox";
             this.queryServerBox.Size = new System.Drawing.Size(100, 20);
-            this.queryServerBox.TabIndex = 2;
+            this.queryServerBox.TabIndex = 1;
             // 
             // queryPassBox
             // 
@@ -77,7 +79,7 @@
             this.queryUserBox.Location = new System.Drawing.Point(104, 51);
             this.queryUserBox.Name = "queryUserBox";
             this.queryUserBox.Size = new System.Drawing.Size(100, 20);
-            this.queryUserBox.TabIndex = 4;
+            this.queryUserBox.TabIndex = 2;
             // 
             // label1
             // 
@@ -108,12 +110,12 @@
             // 
             // LoginForm
             // 
-            this.AcceptButton = this.buttonConfirm;
+            this.AcceptButton = this.btnConfirm;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(212, 150);
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new System.Drawing.Size(220, 155);
             this.ControlBox = false;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -121,8 +123,8 @@
             this.Controls.Add(this.queryUserBox);
             this.Controls.Add(this.queryPassBox);
             this.Controls.Add(this.queryServerBox);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonConfirm);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnConfirm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -130,7 +132,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Login Window";
-            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,8 +139,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonConfirm;
-        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox queryServerBox;
         private System.Windows.Forms.TextBox queryPassBox;
         private System.Windows.Forms.TextBox queryUserBox;
