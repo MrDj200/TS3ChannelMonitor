@@ -122,10 +122,15 @@ namespace TS3ChannelMonitor.TS3Stuff
 
             myBot.EventShit();
 
-            // TODO: Find out how to do this shit :(
+            MainForm.Invoke((MethodInvoker) delegate {MainForm.ChangeConnectLabel(true);});
+
+            // TODO: Find out how to do this shit :( (Change Label)
             //MainForm.ChangeConnectLabel(true);
 
             CurrentClients = myBot.TSClient.GetClients().GetAwaiter().GetResult();
+            IReadOnlyList<GetChannelListInfo> channels = myBot.TSClient.GetChannels().GetAwaiter().GetResult();
+
+            MainForm.Invoke((MethodInvoker)delegate { MainForm.FillChannelList(channels); });
 
             ulong i = 0;
             ulong refreshRate = 1000 / 20;

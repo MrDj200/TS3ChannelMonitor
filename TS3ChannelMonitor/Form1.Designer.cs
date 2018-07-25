@@ -35,8 +35,8 @@
             this.channelList = new System.Windows.Forms.ListView();
             this.listChannelName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listChannelSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.searchButton = new System.Windows.Forms.Button();
-            this.searchInput = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearchBar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.playlistListbox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
@@ -96,21 +96,22 @@
             this.listChannelSize.Text = "Clients";
             this.listChannelSize.Width = 59;
             // 
-            // searchButton
+            // btnSearch
             // 
-            this.searchButton.Location = new System.Drawing.Point(636, 62);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(75, 22);
-            this.searchButton.TabIndex = 18;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
+            this.btnSearch.Location = new System.Drawing.Point(636, 62);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 22);
+            this.btnSearch.TabIndex = 18;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // searchInput
+            // txtSearchBar
             // 
-            this.searchInput.Location = new System.Drawing.Point(34, 63);
-            this.searchInput.Name = "searchInput";
-            this.searchInput.Size = new System.Drawing.Size(587, 20);
-            this.searchInput.TabIndex = 17;
+            this.txtSearchBar.Location = new System.Drawing.Point(34, 63);
+            this.txtSearchBar.Name = "txtSearchBar";
+            this.txtSearchBar.Size = new System.Drawing.Size(587, 20);
+            this.txtSearchBar.TabIndex = 17;
             // 
             // label2
             // 
@@ -136,8 +137,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 636);
             this.Controls.Add(this.channelList);
-            this.Controls.Add(this.searchButton);
-            this.Controls.Add(this.searchInput);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtSearchBar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.playlistListbox);
             this.Controls.Add(this.statusLabel);
@@ -161,8 +162,8 @@
         private System.Windows.Forms.ListView channelList;
         private System.Windows.Forms.ColumnHeader listChannelName;
         private System.Windows.Forms.ColumnHeader listChannelSize;
-        private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.TextBox searchInput;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtSearchBar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox playlistListbox;
     }

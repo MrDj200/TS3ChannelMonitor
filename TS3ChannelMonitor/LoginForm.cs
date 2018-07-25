@@ -43,7 +43,7 @@ namespace TS3ChannelMonitor
             SettingsManager.Save(Program.SETTINGS);
             this.Close();
             TS3Bot.Instance.StartConnection();
-            Program.MainForm.ChangeConnectLabel(true);
+            //Program.MainForm.ChangeConnectLabel(true);
             //while(TS3Bot.Instance.)
         }
     }
