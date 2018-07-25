@@ -8,8 +8,6 @@ namespace TS3ChannelMonitor.Settings
 	{
 		public String ServerAddress { get; set; }
 
-		public int VirtualServerID { get; set; }
-
 		public String TS3LoginName { get; set; }
 
 		public String TS3LoginPass { get; set; }

@@ -12,12 +12,20 @@ namespace TS3ChannelMonitor.Settings
     {
         public static bool SettingsCheck(String filePath)
         {
-            return File.Exists(filePath);
+            try
+            {
+                return File.Exists(filePath);
+            }
+            catch (Exception)
+            {
+                throw;
+            }            
         }
 
-        internal static void Save(GlobalSettings settings)
+        internal static void Save()
         {
-            JsonSerialization.WriteToJsonFile<GlobalSettings>(Program.SettingsFile, settings);
+            // TODO: Implement this
+            throw new NotImplementedException();
         }
     }
 }

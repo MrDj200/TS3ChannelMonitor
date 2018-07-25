@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TeamSpeak3QueryApi.Net;
 using TeamSpeak3QueryApi.Net.Specialized;
@@ -20,15 +17,16 @@ namespace TS3ChannelMonitor.Utils.Extensions
                 new Parameter("message", message));
         }
 
-        public static String Quit(this TeamSpeakClient tsclient)
+        public static Task Quit(this TeamSpeakClient tsclient)
         {
-            if(tsclient != null)
+            try
             {
-                tsclient.Client.Send("quit");
-                return "OK";
+                return tsclient.Client.Send("quit");
             }
-
-            return "ERROR";            
+            catch (Exception)
+            {
+                throw;
+            }         
         }
     }
 }

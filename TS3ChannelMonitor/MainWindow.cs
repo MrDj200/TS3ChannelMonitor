@@ -11,9 +11,9 @@ using TS3ChannelMonitor.Settings;
 
 namespace TS3ChannelMonitor
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
-        public Form1()
+        public MainWindow()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle; // Making the Window a fixed size
@@ -26,16 +26,17 @@ namespace TS3ChannelMonitor
         {
             if (connected)
             {
-                this.statusLabel.Text = "Connected";
-                this.statusLabel.ForeColor = Color.Green;
+                this.lblStatus.Text = "Connected";
+                this.lblStatus.ForeColor = Color.Green;
             }
         }
 
-        private void loginButton_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             LoginForm lf = new LoginForm();
-
+            // TODO: Fill LoginForm textBoxes with saved Settings
             lf.ShowDialog();
+            
         }
     }
 }
