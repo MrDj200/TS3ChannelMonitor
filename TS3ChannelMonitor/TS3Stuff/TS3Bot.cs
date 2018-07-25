@@ -20,7 +20,7 @@ namespace TS3ChannelMonitor.TS3Stuff
         public String Name { get; set; } = "TS3ChannelMonitor";
         public String Server { get; set; } = "127.0.0.1";
         private String LoginName { get; set; } = "serveradmin";
-        private String LoginPass { get; set; } = "OY3pSQF4"; // This is for my local test TS3 server. Don't even try *looks @exp111*
+        private String LoginPass { get; set; } = "OY3pSQF4"; // This is for my local test TS3 server. Don't even try *looks @exp111* //uwu oopsie woopsie :3
 
         public static bool Running = true;
 
@@ -41,11 +41,7 @@ namespace TS3ChannelMonitor.TS3Stuff
         public async Task<ConnectionResult> Login(String LoginName, String LoginPass, String Server, int VServerID = 1)
         {
             TSClient = new TeamSpeakClient(Server);
-            this.VServerID = VServerID;
-            if (this.VServerID == 0)
-            {
-                this.VServerID = 1;
-            }
+            this.VServerID = VServerID <= 0 ? VServerID : 1;
             
             try
             {
@@ -79,7 +75,7 @@ namespace TS3ChannelMonitor.TS3Stuff
             await TSClient.ChangeNickName(this.Name);
             Who = await TSClient.WhoAmI();
 
-            await TSClient.RegisterServerNotification();
+            //await TSClient.RegisterServerNotification();
             await TSClient.RegisterChannelNotification(Who.ChannelId);
             await TSClient.RegisterTextChannelNotification();
             await TSClient.RegisterTextPrivateNotification();
@@ -97,7 +93,7 @@ namespace TS3ChannelMonitor.TS3Stuff
         public void GetClientsOnline()
         {
             //var shit = await GameBot.Instance.TSClient.GetClients();
-            // TODO: this
+            //TODO: this
         }
 
         public void StartConnection()
@@ -114,7 +110,7 @@ namespace TS3ChannelMonitor.TS3Stuff
         {           
             TS3Bot myBot = TS3Bot.Instance;
 
-            ConnectionResult result= myBot.Login(SETTINGS.TS3Info).GetAwaiter().GetResult();
+            ConnectionResult result = myBot.Login(SETTINGS.TS3Info).GetAwaiter().GetResult();
 
             //MessageBox.Show($"{result.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -122,15 +118,12 @@ namespace TS3ChannelMonitor.TS3Stuff
 
             myBot.EventShit();
 
-            MainForm.Invoke((MethodInvoker) delegate {MainForm.ChangeConnectLabel(true);});
-
-            // TODO: Find out how to do this shit :( (Change Label)
-            //MainForm.ChangeConnectLabel(true);
+            MainForm.Invoke((MethodInvoker) delegate { MainForm.ChangeConnectLabel(true); });
 
             CurrentClients = myBot.TSClient.GetClients().GetAwaiter().GetResult();
             IReadOnlyList<GetChannelListInfo> channels = myBot.TSClient.GetChannels().GetAwaiter().GetResult();
 
-            MainForm.Invoke((MethodInvoker)delegate { MainForm.FillChannelList(channels); });
+            MainForm.Invoke((MethodInvoker) delegate { MainForm.FillChannelList(channels); });
 
             ulong i = 0;
             ulong refreshRate = 1000 / 20;
@@ -141,12 +134,12 @@ namespace TS3ChannelMonitor.TS3Stuff
                 if (i++ > refreshRate * 60)
                 {
                     CurrentClients = myBot.TSClient.GetClients().GetAwaiter().GetResult();
+                    channels = myBot.TSClient.GetChannels().GetAwaiter().GetResult();
                     i = 0;
                 }
 
                 Thread.Sleep(20);
             }
         }
-
-        }
+    }
 }

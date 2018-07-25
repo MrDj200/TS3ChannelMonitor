@@ -66,7 +66,7 @@ namespace TS3ChannelMonitor
             }
 
             IReadOnlyList<GetChannelListInfo> channels = TS3Bot.Instance.TSClient.GetChannels().GetAwaiter().GetResult();
-
+            
             channels = (IReadOnlyList<GetChannelListInfo>)channels.Where(c => c.Name.Contains(this.txtSearchBar.Text));
 
         }

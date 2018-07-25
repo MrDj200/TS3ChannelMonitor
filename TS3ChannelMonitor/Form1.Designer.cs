@@ -81,7 +81,7 @@
             this.channelList.Location = new System.Drawing.Point(34, 90);
             this.channelList.MultiSelect = false;
             this.channelList.Name = "channelList";
-            this.channelList.Size = new System.Drawing.Size(677, 306);
+            this.channelList.Size = new System.Drawing.Size(318, 306);
             this.channelList.TabIndex = 19;
             this.channelList.UseCompatibleStateImageBehavior = false;
             this.channelList.View = System.Windows.Forms.View.Details;
@@ -98,7 +98,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(636, 62);
+            this.btnSearch.Location = new System.Drawing.Point(277, 61);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 22);
             this.btnSearch.TabIndex = 18;
@@ -110,7 +110,7 @@
             // 
             this.txtSearchBar.Location = new System.Drawing.Point(34, 63);
             this.txtSearchBar.Name = "txtSearchBar";
-            this.txtSearchBar.Size = new System.Drawing.Size(587, 20);
+            this.txtSearchBar.Size = new System.Drawing.Size(237, 20);
             this.txtSearchBar.TabIndex = 17;
             // 
             // label2
@@ -128,14 +128,14 @@
             this.playlistListbox.FormattingEnabled = true;
             this.playlistListbox.Location = new System.Drawing.Point(34, 424);
             this.playlistListbox.Name = "playlistListbox";
-            this.playlistListbox.Size = new System.Drawing.Size(677, 147);
+            this.playlistListbox.Size = new System.Drawing.Size(318, 147);
             this.playlistListbox.TabIndex = 15;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 636);
+            this.ClientSize = new System.Drawing.Size(393, 636);
             this.Controls.Add(this.channelList);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearchBar);
