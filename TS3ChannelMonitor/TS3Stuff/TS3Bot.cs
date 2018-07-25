@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -41,12 +42,15 @@ namespace TS3ChannelMonitor.TS3Stuff
         {
             TSClient = new TeamSpeakClient(Server);
             this.VServerID = VServerID;
+            if (this.VServerID == 0)
+            {
+                this.VServerID = 1;
+            }
+            
             try
             {
                 //TSClient.
                 await TSClient.Connect();
-
-                MessageBox.Show("Made it", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information); // Debug
 
                 await TSClient.Login(LoginName, LoginPass);
                 await TSClient.UseServer(this.VServerID);
@@ -98,37 +102,7 @@ namespace TS3ChannelMonitor.TS3Stuff
 
         public void StartConnection()
         {
-            TS3QueryInfo ts3ServerInfo = SETTINGS.TS3Info;
-
-            switch (TS3Bot.Instance.Login(ts3ServerInfo).GetAwaiter().GetResult())
-            {
-                case ConnectionResult.OK:
-                    Console.WriteLine("Connected!");
-                    break;
-                case ConnectionResult.SOCKET:
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nCould not connect to TeamSpeak Server! Is the Server offline?\n\nPress Enter to exit");
-                    while (Console.ReadKey(true).Key != ConsoleKey.Enter) { }
-                    return;
-                //	break;
-                case ConnectionResult.QUERY:
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nPlease Enter the correct Login Credentials! (" + SettingsFile + ")\n\nPress Enter to exit");
-                    while (Console.ReadKey(true).Key != ConsoleKey.Enter) { }
-                    return;
-                //	break;
-
-                case ConnectionResult.UNKNOWN:
-                default:
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nCould not connect to TeamSpeak Server!\n\nPress Enter to exit");
-                    MessageBox.Show("Could not connect to TeamSpeak Server!\n\nPress Enter to exit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                    //	break;
-            }
+            TS3QueryInfo ts3ServerInfo = SETTINGS.TS3Info;            
 
             #region ThreadStuff
             Thread botThread = new Thread(RunBot);
@@ -137,12 +111,19 @@ namespace TS3ChannelMonitor.TS3Stuff
         }
 
         public static void RunBot()
-        {
+        {           
             TS3Bot myBot = TS3Bot.Instance;
 
-            myBot.StartBot(myBot.VServerID).Wait();
+            ConnectionResult result= myBot.Login(SETTINGS.TS3Info).GetAwaiter().GetResult();
+
+            //MessageBox.Show($"{result.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            myBot.StartBot(1).Wait();
 
             myBot.EventShit();
+
+            // TODO: Find out how to do this shit :(
+            //MainForm.ChangeConnectLabel(true);
 
             CurrentClients = myBot.TSClient.GetClients().GetAwaiter().GetResult();
 

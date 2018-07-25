@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TeamSpeak3QueryApi.Net.Specialized;
 using TS3ChannelMonitor.Settings;
+using TS3ChannelMonitor.TS3Stuff;
 using TS3ChannelMonitor.Utils;
+using TS3ChannelMonitor.Utils.Extensions;
 
 namespace TS3ChannelMonitor
 {
@@ -21,6 +23,8 @@ namespace TS3ChannelMonitor
         }
         
         public static String SettingsFile { get; set; } = "Settings.json";
+
+        public static Form1 MainForm { get; private set; }
         public static GlobalSettings SETTINGS { get; set; }
 
         /// <summary>
@@ -29,6 +33,7 @@ namespace TS3ChannelMonitor
         [STAThread]
         static void Main()
         {
+            Application.ApplicationExit += new EventHandler(OnApplicationExit);
 
             if (SettingsManager.SettingsCheck(SettingsFile))
             {
@@ -41,7 +46,19 @@ namespace TS3ChannelMonitor
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            MainForm = new Form1();
+            Application.Run(MainForm);
+
         }
+
+        private static void OnApplicationExit(object sender, EventArgs e)
+        {
+            // When the application is exiting, write the application data to the
+            // user file and close it.
+            TS3Bot.Instance.TSClient.Quit();
+
+            TS3Bot.Running = false;
+        }
+
     }
 }

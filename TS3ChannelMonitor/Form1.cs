@@ -22,6 +22,15 @@ namespace TS3ChannelMonitor
             this.MinimizeBox = false;
         }
 
+        public void ChangeConnectLabel(bool connected)
+        {
+            if (connected)
+            {
+                this.statusLabel.Text = "Connected";
+                this.statusLabel.ForeColor = Color.Green;
+            }
+        }
+
         private void loginButton_Click(object sender, EventArgs e)
         {
             LoginForm lf = new LoginForm();
